@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stadtforum</title>
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="../css/forum.css" />
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Startseite</a></li>
+                <li><a href="forum.html" class="aktiv">Forum</a></li>
+                <li><a href="info.html">Info</a></li>
+                <li><a href="https://69d0e652-d7b3-498d-ab49-db9f753af7f2-00-1z8tvvn4utv4v.spock.replit.dev">Fragesystem</a></li>
+                <li><a href="Karte.html">Karte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class ="Ueberschrift">
+    <div class="text">
+    <h1>Stadtforum</h1>
+    <p> Dieses Forum ist für den Austausch von Meinungen, Ideen oder Feedback gedacht.<br> 
+        Am Ende können Sie eine Stimmungsanalyse von ihrem Kommentar durchführen </p>
+    </div>
+    </section>
+
+<section class ="inputFeld">
+    <form id="inputt">
+        <label for="username">Name:</label><br>
+        <input type="text" id="username" required><br><br>
+        <label for="message">Nachricht:</label><br>
+        <textarea id="message" required></textarea>
+        <button type="submit">Posten</button>
+    </form>
+</section>
+
+<section class="Beitrag">
+    <h2 class="Ueberschrift">Beiträge</h2>
+    <div id="posts"></div>
+</section>
+
+<footer>
+    Bachelorprojekt 
+</footer>
+
+
+<script src="../js/forum.js"></script>
+</body>
+</html>
