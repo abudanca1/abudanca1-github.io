@@ -1,50 +1,49 @@
-nav { 
-    display: inline;
-    align-items: flex-end;
-}
-li { 
-    background-color: aliceblue; 
-    display: inline;
-    align-items: flex-end;
-    align-content: end;
-  
-}
-li a { 
-    color: rgb(16, 15, 15);
-    padding: 204px 16px;
-}
-li a:hover {
-    background-color: orange;
-  }
-  
-
-ul {
-    gap: 20px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: aliceblue;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-  }
-  nav ul li a {
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-    padding: 10px 15px;
-}
-
-  .aktiv {
-    background: orange;
-    border-radius: 5px;
-    color: white;
-}
-
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #111;
+}
+nav {
+  position: -webkit-sticky;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+ul {
+  position: -webkit-sticky;
+  background-color: white;
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  top: 0;
+}
+
+li a {
+  position: sticky;
+  color: black;
+  text-decoration: none;
+  padding: 10px 16px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+li a:hover {
+  background-color: #f0f0f0; 
+}
+
+.aktiv {
+  background: #e0e0e0;
+  color: black;
+  border-radius: 4px;
+}

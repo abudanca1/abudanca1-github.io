@@ -6,17 +6,6 @@
 
 {"username":"Sylvia","message":"Gute Idee","timestamp":"2025-04-03 16:15:12","likes":0}
 {"username":"s","message":"s","timestamp":"2025-04-05 17:09:08"}
-{"username":"[object HTMLInputElement]","message":"[object HTMLTextAreaElement]","timestamp":"2025-04-05 17:52:12"}
-{"username":"gh","message":"von","timestamp":"2025-04-05 17:52:39"}
-{"username":"ghj","message":"vgbn","timestamp":"2025-04-05 17:58:43"}
-{"username":"bin","message":"hgj","timestamp":"2025-04-05 17:59:27"}
-{"username":"bn","message":"bin","timestamp":"2025-04-05 17:59:47"}
-{"username":"d","message":"d","timestamp":"2025-04-05 18:01:06"}
-{"username":"d","message":"d","timestamp":"2025-04-05 18:01:25"}
-{"username":"h","message":"b","timestamp":"2025-04-05 18:02:18"}
-{"username":"h","message":"n","timestamp":"2025-04-05 18:03:06"}
-{"username":"c","message":"c","timestamp":"2025-04-05 18:04:09"}
-{"username":"s","message":"s","timestamp":"2025-04-05 18:04:47"}
 {"username":"hui","message":"hjkm","timestamp":"2025-04-06 18:50:31"}
 {"username":"Sharon","message":"Tolle Idee, vielleicht mehr Projekte","timestamp":"2025-04-10 19:15:59"}
-{"username":"Dodo","message":"Fuck me","timestamp":"2025-04-11 19:10:12"}
+
