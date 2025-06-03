@@ -1,0 +1,11 @@
+{"username":"Hildegard","message":"Tolle Option! Allerdings w\u00e4re eine regelm\u00e4\u00dfiger Austausch und eventuell Mitbestimmungsrechte f\u00fcr B\u00fcrgerInnen sinnvoller.","timestamp":"2025-03-20 08:27:35","likes":0}
+{"username":"G\u00fcnther","message":"Hey","timestamp":"2025-03-20 08:47:52","likes":0}
+
+{"username":"Hildegard","message":"Tolle Idee. An der Umsetzung sollte jedoch gearbeitet werden. Noch Fehler vorhanden.","timestamp":"2025-03-22 15:12:55","likes":0}
+{"username":"DODO","message":"Gut","timestamp":"2025-03-22 15:13:13","likes":0}
+
+{"username":"Sylvia","message":"Gute Idee","timestamp":"2025-04-03 16:15:12","likes":0}
+{"username":"s","message":"s","timestamp":"2025-04-05 17:09:08"}
+{"username":"hui","message":"hjkm","timestamp":"2025-04-06 18:50:31"}
+{"username":"Sharon","message":"Tolle Idee, vielleicht mehr Projekte","timestamp":"2025-04-10 19:15:59"}
+
