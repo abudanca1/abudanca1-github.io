@@ -7,7 +7,7 @@ nltk.download('stopwords')
 
 
 # JSON-Datei laden
-with open("/content/FrageAntwortListe.json", "r", encoding="utf-8") as file:
+with open("FrageAntwortListe.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 import json
 from nltk.tokenize import word_tokenize
