@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QA-System</title>
+</head>
+<body>
+    <h2>Frage-Antwort-System</h2>
+    <form method="post">
+        <textarea name="user_input" rows="5" cols="60" placeholder="Deine Frage oder Kontext..."></textarea><br>
+        <button type="submit">Senden</button>
+    </form>
+    {% if result %}
+        <h3>Antwort ({{ method }}):</h3>
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
