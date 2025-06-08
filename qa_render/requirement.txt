@@ -7,3 +7,4 @@ torch
 cohere
 wikipedia-api
 numpy
+python-multipart
