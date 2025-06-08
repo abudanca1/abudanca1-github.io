@@ -11,8 +11,8 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 # Module neu laden (optional, z.B. für Live-Reload in Dev)
-importlib.reload(comma)
-importlib.reload(commi)
+importlib.reload(qa_cohere)
+importlib.reload(qa_small)
 
 # FastAPI-Anwendung
 app = FastAPI()
