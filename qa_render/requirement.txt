@@ -1,6 +1,9 @@
 fastapi
 uvicorn
 jinja2
+nltk
 transformers
 torch
-nltk
+cohere
+wikipedia-api
+numpy
