@@ -2,18 +2,24 @@ import cohere
 import wikipediaapi
 from numpy import dot
 from numpy.linalg import norm
+import os
 
+def run(user_input):
+    # 🔐 API-Key sicher aus Environment Variable laden
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        return "❌ Fehler: API_KEY nicht gesetzt."
 
-def run():
-    API_KEY = "ZVbygf99raWTemslyvWjio9G4BvcP4XLgvxmFOox"
-    co = cohere.Client(API_KEY)
-    
+    co = cohere.Client(api_key)
+
+    # Themen für Wikipedia
     topics = ["Stadtumbau", "Bauplanungsrecht", "Stadterneuerung", "Städtebauförderung"]
-    
+
+    # Kosinus-Ähnlichkeit
     def cosine_sim(a, b):
         return dot(a, b) / (norm(a) * norm(b))
 
-    # Wikipedia-Schnittstelle initialisieren
+    # Wikipedia API initialisieren
     wiki = wikipediaapi.Wikipedia(
         user_agent="MultiQABot/1.0 (you@example.com)",
         language="de"
@@ -22,7 +28,7 @@ def run():
     paragraphs = []
     paragraph_topics = []
 
-    # 🔍 1. Wikipedia-Absätze sammeln
+    # 🔍 Wikipedia-Absätze sammeln
     for topic in topics:
         page = wiki.page(topic)
         if page.exists():
@@ -30,15 +36,11 @@ def run():
             paras = [p.strip() for p in text.split("\n") if len(p.strip()) > 100]
             paragraphs.extend(paras)
             paragraph_topics.extend([topic] * len(paras))
-            print(f" '{topic}': {len(paras)} Absätze geladen.")
-        else:
-            print(f" '{topic}' nicht gefunden.")
 
     if not paragraphs:
-        print(" Keine Inhalte geladen. Abbruch.")
-        return
+        return "❌ Keine Wikipedia-Inhalte gefunden."
 
-    # 🧠 2. Embeddings der Absätze
+    # 🧠 Embeddings der Absätze
     embed_response = co.embed(
         texts=paragraphs,
         model="embed-multilingual-v3.0",
@@ -46,33 +48,29 @@ def run():
     )
     chunk_embeddings = embed_response.embeddings
 
-    #  3. Frage stellen
-    frage = input("\n Deine Frage: ").strip()
+    # 🧠 Embedding der Frage
     frage_embedding = co.embed(
-        texts=[frage],
+        texts=[user_input],
         model="embed-multilingual-v3.0",
         input_type="search_query"
     ).embeddings[0]
 
-    # 🔍 4. Semantisch ähnlichsten Absatz finden
+    # 🔍 Ähnlichster Absatz
     scores = [cosine_sim(frage_embedding, chunk) for chunk in chunk_embeddings]
     best_index = scores.index(max(scores))
     bester_chunk = paragraphs[best_index]
     quelle = paragraph_topics[best_index]
 
-    # 🧾 5. Ausgabe + Cohere-Generierung
-    print(f"\n📄 Relevanter Abschnitt aus: {quelle}")
-    print(bester_chunk[:500] + "...")
-
+    # ✍️ Antwort generieren
     response = co.generate(
         model="command-r-plus",
-        prompt=f"Answer the question based on the following context.\n\nContext:\n{bester_chunk}\n\nQuestion: {frage}\nAnswer:",
+        prompt=f"Beantworte die Frage auf Basis des Kontexts.\n\nKontext:\n{bester_chunk}\n\nFrage: {user_input}\nAntwort:",
         max_tokens=200,
         temperature=0.7,
     )
 
-    print("\n💬 Antwort:")
-    print(response.generations[0].text.strip())
+    antwort = response.generations[0].text.strip()
 
-# Nur wenn du willst, dass es beim Laden automatisch läuft:
+    return f"{antwort}\n\n📄 Quelle: {quelle}"
+
 
