@@ -6,17 +6,11 @@ import os
 
 def run(user_input):
     # 🔐 API-Key sicher aus Environment Variable laden
-    api_key = os.getenv("API_KEY")
-    if not api_key:
-        return "❌ Fehler: API_KEY nicht gesetzt."
-
-    co = cohere.Client(api_key)
-
-    # Themen für Wikipedia
-    topics = ["Stadtumbau", "Bauplanungsrecht", "Stadterneuerung", "Städtebauförderung"]
-
-    # Kosinus-Ähnlichkeit
-    def cosine_sim(a, b):
+   API_KEY = "ZVbygf99raWTemslyvWjio9G4BvcP4XLgvxmFOox"
+   co = cohere.Client(API_KEY)
+   topics = ["Stadtumbau", "Bauplanungsrecht", "Stadterneuerung", "Städtebauförderung"]
+   
+   def cosine_sim(a, b):
         return dot(a, b) / (norm(a) * norm(b))
 
     # Wikipedia API initialisieren
@@ -38,9 +32,9 @@ def run(user_input):
             paragraph_topics.extend([topic] * len(paras))
 
     if not paragraphs:
-        return "❌ Keine Wikipedia-Inhalte gefunden."
+        return " Keine Wikipedia-Inhalte gefunden."
 
-    # 🧠 Embeddings der Absätze
+    # Embeddings der Absätze
     embed_response = co.embed(
         texts=paragraphs,
         model="embed-multilingual-v3.0",
@@ -48,20 +42,20 @@ def run(user_input):
     )
     chunk_embeddings = embed_response.embeddings
 
-    # 🧠 Embedding der Frage
+    # Embedding der Frage
     frage_embedding = co.embed(
         texts=[user_input],
         model="embed-multilingual-v3.0",
         input_type="search_query"
     ).embeddings[0]
 
-    # 🔍 Ähnlichster Absatz
+    # Ähnlichster Absatz
     scores = [cosine_sim(frage_embedding, chunk) for chunk in chunk_embeddings]
     best_index = scores.index(max(scores))
     bester_chunk = paragraphs[best_index]
     quelle = paragraph_topics[best_index]
 
-    # ✍️ Antwort generieren
+    # Antwort generieren
     response = co.generate(
         model="command-r-plus",
         prompt=f"Beantworte die Frage auf Basis des Kontexts.\n\nKontext:\n{bester_chunk}\n\nFrage: {user_input}\nAntwort:",
@@ -71,6 +65,6 @@ def run(user_input):
 
     antwort = response.generations[0].text.strip()
 
-    return f"{antwort}\n\n📄 Quelle: {quelle}"
+    return f"{antwort}\n\n Quelle: {quelle}"
 
 
