@@ -6,7 +6,8 @@ import os
 
 def run(user_input):
     # API-Key sicher aus Environment Variable laden (besser: os.environ.get)
-    API_KEY = "ZVbygf99raWTemslyvWjio9G4BvcP4XLgvxmFOox"
+  
+    API_KEY = os.environ.get("API_KEY")
     co = cohere.Client(API_KEY)
 
     topics = ["Stadtumbau", "Bauplanungsrecht", "Stadterneuerung", "Städtebauförderung"]
